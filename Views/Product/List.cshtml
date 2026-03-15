@@ -1,0 +1,26 @@
+@using web_05.ViewModels
+@model ProductListViewModel
+
+<h1 class="mb-4">@Model.CurrentCategory</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var product in Model.Products)
+    {
+        <div class="col">
+        
+
+            <div class="card h-100 shadow-sm border-0">
+                <img src="@product.ImageUrl" class="card-img-top" alt="@product.Name" style="height: 250px; object-fit: cover;">
+            
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold">
+                        <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" class="text-decoration-none">@product.Name</a>
+                    </h5>
+                    <p class="card-text text-muted fs-5 fw-semibold">@product.Price.ToString("c")</p>
+                    <!-- Botón futuro -->
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-outline-primary btn-sm">Ver detalles</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

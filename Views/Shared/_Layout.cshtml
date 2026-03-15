@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] NAVORI</title>  <!-- Título dinámico + nombre de tu tienda -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Work+Sans" />
+    <!-- Bootstrap CSS (ya lo tienes en wwwroot/lib/bootstrap, pero puedes usar CDN para simplicidad) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+
+    <!-- Bootstrap CSS local -->
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+
+<!-- Tu CSS personalizado (después de Bootstrap) -->
+<link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+<style>
+    /* Fondo general de la página (rosa suave y vivo) */
+    body {
+        background-color: #FDF6F9;  /* Rosa muy claro cálido */
+        color: #2A1A20;             /* Texto oscuro rosado */
+        font-family: 'Work Sans', sans-serif;
+    }
+
+    /* Navbar: Fondo oscuro elegante + texto rosa claro */
+    .navbar.fixed-top {
+        background-color: #D89FAF !important;  /* Gris oscuro rosado (tu dark) */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .navbar .navbar-brand img {
+        filter: brightness(1.1);
+    }
+
+    .navbar .nav-link {
+        color: #F9E8EE !important;  /* Rosa muy claro para contraste */
+        font-weight: 500;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        color: #2A1A20; !important;  /* Rosa gold vibrante al hover */
+    }
+
+    /* Títulos y enlaces en toda la página */
+    h1, h2, h3, h4, h5, h6 {
+        color: #D89FAF !important;  /* Rosa gold principal */
+    }
+
+    a:not(.btn) {
+        color: #D89FAF !important;
+    }
+
+    a:not(.btn):hover {
+        color: #B56D88 !important;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #D89FAF !important;
+        color: #F9E8EE !important;
+        padding: 1rem 0;
+        margin-top: 2rem;
+    }
+</style>
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top"> 
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <!-- Reemplaza con TU logo horizontal -->
+                    <img src="~/images/Logonavori.png" alt="Joyería Logo" width="180" height="50" class="d-inline-block align-text-top" />
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Product" asp-action="List">JOYAS</a>  <!-- Cambia "Pie" por tu controlador de productos -->
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Category" asp-action="List">CATEGORIAS</a>
+                        </li>
+                        <!-- Agrega más enlaces si quieres: Contacto, Sobre Nosotros, etc. -->
+                    </ul>
+                    <!-- Opcional: carrito o búsqueda futura -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CONTACTO</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5 pt-4">  <!-- Espacio para el navbar fixed-top -->
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2026 - NAVORI - Todos los derechos reservados
+        </footer>
+
+    <!-- jQuery local -->
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+
+<!-- Bootstrap JS local -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <!-- Bootstrap JS (al final para mejor rendimiento) -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> 
+</body>
+</html>
