@@ -77,5 +77,5 @@ jobs:
           ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} <<'EOF'
           docker load < /tmp/image.tar
           docker rm -f web-05 || true
-          docker run -d --name web-05 -p 5:8080 web-05:latest
+          docker run -d --name web-05 -p 8505:8080 web-05:latest
         EOF
