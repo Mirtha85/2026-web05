@@ -17,4 +17,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.MapDefaultControllerRoute();
+// Redirige la página principal (/) a la lista de productos
+app.MapGet("/", () => Results.Redirect("/Product/List"));
 app.Run();
