@@ -4,9 +4,9 @@
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 
-# Listen on port 5010 and bind to any IP
-EXPOSE 5010
-ENV ASPNETCORE_URLS="http://+:5010"
+# Listen on port 8080 and bind to any IP
+EXPOSE 8080
+ENV ASPNETCORE_URLS="http://+:8080"
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
