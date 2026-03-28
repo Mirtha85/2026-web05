@@ -11,24 +11,49 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddDbContext<JoyeriaDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("JoyeriaDbConnection")));
 
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
+
 var app = builder.Build();
 
-//app.MapGet("/", () => "Hello World!");
+// Configuración del pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 
+app.UseHttpsRedirection();
 app.UseStaticFiles();
-app.MapDefaultControllerRoute();
-// Redirige la página principal (/) a la lista de productos
-app.MapGet("/", () => Results.Redirect("/Product/List"));
+app.UseSession();
 
-// Al final, antes de app.Run()
+app.UseRouting();
+
+app.UseAuthorization();
+
+// Ruta por defecto: ahora apunta a Home/Index (la página principal con carousel)
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Redirigir la raíz "/" a Home/Index (por si acaso alguien entra sin controlador)
+app.MapGet("/", () => Results.Redirect("/Home/Index"));
+
+// Aplicar migraciones + seed antes de servir la app
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<JoyeriaDbContext>();
-    db.Database.Migrate();  // Aplica migraciones pendientes automáticamente
+
+    // 1. Aplicar migraciones (crea tablas si no existen)
+    db.Database.Migrate();
+
+    // 2. Sembrar datos
     DbInitializer.Seed(app);
 }
+
 app.Run();

@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Contacto - NAVORI";
+}
+
+<div class="container my-5">
+    <h2 class="text-center mb-5" style="color: #D89FAF;">Contáctanos</h2>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Información de Contacto</h4>
+            <ul class="list-unstyled mt-3">
+                <li><strong>Nombre:</strong> Alizon</li>
+                <li><strong>Email:</strong> <a href="mailto:contacto@navori.com">contacto@navori.com</a></li>
+                <li><strong>WhatsApp:</strong> +591 7XXX XXXX</li>
+                <li><strong>Instagram:</strong> <a href="https://instagram.com/navori.joyeria">navori.joyeria</a></li>
+                <li><strong>Ubicación:</strong> Santa Cruz de la Sierra, Bolivia</li>
+            </ul>
+
+            <h4 class="mt-4">Horario</h4>
+            <p>Lunes a Viernes: 9:00 - 19:00<br>Sábados: 10:00 - 16:00</p>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Envíanos un mensaje</h4>
+            <form asp-controller="Home" asp-action="Contact" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Nombre completo</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Correo electrónico</label>
+                    <input type="email" name="email" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mensaje</label>
+                    <textarea name="message" class="form-control" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar mensaje</button>
+            </form>
+        </div>
+    </div>
+</div>

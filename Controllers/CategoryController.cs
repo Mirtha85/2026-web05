@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using web_05.Models;
 using web_05.ViewModels;
 
-namespace joyeria.Controllers
+namespace web_05.Controllers
 {
     public class CategoryController : Controller
     {

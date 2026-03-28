@@ -1,0 +1,49 @@
+@model web_05.Models.Product
+
+<div class="container my-5">
+    <div class="row gx-5">
+        
+        <!-- Imagen del producto -->
+        <div class="col-md-5 text-center">
+            <img src="@Model.ImageUrl" 
+                 onerror="this.src='/Images/default-jewelry.jpg'"
+                 alt="@Model.Name"
+                 class="img-fluid shadow"
+                 style="max-height: 450px; object-fit: contain; background: white; 
+                        padding: 20px; border: 3px solid #D89FAF; border-radius: 15px;">
+        </div>
+
+        <!-- Información del producto -->
+        <div class="col-md-7">
+            <h2 class="mb-3" style="color: #D89FAF;">@Model.Name</h2>
+            
+            <p class="text-muted fs-5">@Model.ShortDescription</p>
+            
+            <hr style="border-color: #D89FAF;">
+            
+            <p>@Model.LongDescription</p>
+
+            <div class="mt-4 mb-4">
+                <h3 class="price" style="color: #D4AF37;">Bs @Model.Price.ToString("N2")</h3>
+            </div>
+
+            <!-- Botón Añadir al Carrito -->
+            <div class="d-grid gap-2">
+                <a asp-controller="ShoppingCart" 
+                   asp-action="AddToCart" 
+                   asp-route-productId="@Model.ProductId"
+                   class="btn btn-lg btn-primary"
+                   style="background-color: #D89FAF; border-color: #D89FAF; color: white;">
+                    🛍️ AÑADIR AL CARRITO
+                </a>
+            </div>
+
+            <div class="mt-3">
+                <a asp-controller="Product" asp-action="List" 
+                   class="btn btn-outline-secondary">
+                    ← Volver a la colección
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

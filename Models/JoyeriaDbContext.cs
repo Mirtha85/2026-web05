@@ -10,5 +10,6 @@ namespace web_05.Models
 
         public DbSet<Product> Products { get; set; }     // ¡Cambia Pies por Products!
         public DbSet<Category> Categories { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
 }
